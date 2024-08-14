@@ -1,0 +1,30 @@
+<odoo>
+    <record id="account_move_form_inherit_id" model="ir.ui.view">
+        <field name="name">account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='invoice_tab']" position="after">
+                <page string="Desired Products" name="desired_invoice_tab">
+                    <field name="account_desired_line_ids" widget="section_and_note_one2many" mode="tree,kanban">
+                        <tree editable="bottom">
+                            <field name="account_desired_product_id" string="Product" widget="many2one_barcode"/>
+                            <field name="account_desired_quantity" string="Quantity"/>
+                            <field name="account_desired_price_unit" string="Sales Price"/>
+                            <field name="account_desired_price_total" string="Price Total"/>
+                        </tree>
+                    </field>
+                    <group name="note_group" col="6" class="mt-2 mt-md-0">
+                        <group colspan="4">
+                            <field  colspan="2" name="narration" nolabel="1" placeholder="Terms and conditions..."/>
+                        </group>
+                        <group class="oe_subtotal_footer" colspan="2" name="sale_total">
+                            <field name="account_desired_grand_price_total" readonly="1"/>
+                        </group>
+                        <div class="clearfix"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,51 @@
+<odoo>
+    <template id="sale_order_report_inherit_id" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='page']" position="after">
+            <div class="mt32 mb32"> <!-- mt32 and mb32 is for giving space both top and bottom -->
+                <h2>Desired Products</h2>
+                <table class="table table-sm o_main_table"> <!-- this class help make a table perfect table otherwise it looks like small table -->
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="doc.desired_line_ids" t-as="line">
+                            <tr>
+                                <td class="text-center">
+                                    <span t-field="line.desired_product_id"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.desired_quantity"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.desired_price_unit"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.desired_price_total"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <div class="clearfix" name="so_total_summary">
+                    <div id="total" class="row" name="total">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                            <table class="table table-sm table-borderless">
+                                <tr class="border-black o_total">
+                                    <td><strong>Total</strong></td>
+                                    <td  class="text-end">
+                                        <span t-field="doc.desired_grand_price_total"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

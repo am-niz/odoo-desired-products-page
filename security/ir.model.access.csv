@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_desired_line_id,access.sale.desired.line,model_sale_desired_line,base.group_user,1,1,1,1
+access_account_desired_line_id,access.account.desired.line,model_account_desired_line,base.group_user,1,1,1,1
